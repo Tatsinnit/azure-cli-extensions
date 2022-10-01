@@ -152,6 +152,10 @@ def load_command_table(self, _):
         g.custom_command('up', 'aks_draft_up')
         g.custom_command('update', 'aks_draft_update')
 
+    # AKS draft commands
+    with self.command_group('aks nubesgen', managed_clusters_sdk, client_factory=cf_managed_clusters) as g:
+        g.custom_command('default', 'aks_nubesgen')
+
     # AKS pod identity commands
     with self.command_group('aks pod-identity', managed_clusters_sdk, client_factory=cf_managed_clusters) as g:
         g.custom_command('add', 'aks_pod_identity_add')

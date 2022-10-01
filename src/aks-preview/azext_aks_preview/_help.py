@@ -2106,3 +2106,25 @@ helps['aks draft update'] = """
       - name: Update the application to be internet accessible with a host of the ingress resource and a Keyvault certificate in a specific project directory.
         text: az aks draft update --host=some_host --certificate=some_certificate --destination=/projects/some_project
 """
+
+helps['aks nubesgen default'] = """
+    type: command
+    short-summary: Run the most common sub-commands in a logical order.
+    long-summary: The projectname sub-command (e.g. ./nubesgen-cli-linux projectname) 
+                  will create a unique project name to be used inside Azure..
+    parameters:
+        - name: --projectname
+          type: string
+          short-summary: Create unique project name using Azure.
+        - name: --scan
+          type: string
+          short-summary: scan your project to find the technologies used. 
+                          It will use those technologies to generate a REST request String that can be sent to the NubesGen REST server.
+    examples:
+      - name: Basic nubesgen.
+        text: az aks nubesgen
+      - name: nubesgen from projectname.
+        text: az aks nubesgen --projectname
+      - name: nubesgen scan.
+        text: az aks nubesgen --scan
+"""
