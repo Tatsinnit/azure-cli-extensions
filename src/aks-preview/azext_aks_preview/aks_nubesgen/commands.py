@@ -20,13 +20,14 @@ from azext_aks_preview._consts import (
 
 
 # `az aks nubesgen` function
-def aks_nubesgen(destination: str,
-                         app_name: str,
-                         language: str,
-                         create_config: str,
-                         dockerfile_only: str,
-                         deployment_only: str,
-                         download_path: str) -> None:
+def aks_nubesgen_cmd_default(destination: str,
+                             app_name: str,
+                             language: str,
+                             create_config: str,
+                             dockerfile_only: str,
+                             deployment_only: str,
+                             download_path: str) -> None:
+    logging.info('Finished running Nubesgen command')
     file_path, arguments = _pre_run(download_path,
                                     destination=destination,
                                     app_name=app_name,
@@ -34,7 +35,7 @@ def aks_nubesgen(destination: str,
                                     create_config=create_config,
                                     dockerfile_only=dockerfile_only,
                                     deployment_only=deployment_only)
-    run_successful = _run(file_path, 'create', arguments)
+    run_successful = _run(file_path, 'default', arguments)
     if run_successful:
         _run_finish()
     else:
@@ -57,7 +58,7 @@ def _run(binary_path: str, command: str, arguments: List[str]) -> bool:
         raise ValueError('The given Binary path was null or empty')
 
     logging.info(f'Running `az aks nubesgen {command}`')
-    cmd = [binary_path, command] + arguments
+    cmd = binary_path
     process = subprocess.Popen(cmd)
     exit_code = process.wait()
     return exit_code == 0

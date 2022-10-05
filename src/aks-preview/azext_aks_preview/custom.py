@@ -113,7 +113,7 @@ from azext_aks_preview.aks_draft.commands import (
     aks_draft_cmd_update,
 )
 from azext_aks_preview.aks_nubesgen.commands import (
-     aks_nubesgen,
+     aks_nubesgen_cmd_default,
  )
 from azext_aks_preview.maintenanceconfiguration import (
     aks_maintenanceconfiguration_update_internal,
@@ -1878,14 +1878,14 @@ def aks_draft_create(destination='.',
     aks_draft_cmd_create(destination, app, language, create_config, dockerfile_only, deployment_only, path)
 
 
-def aks_nubesgen(destination='.',
-                     app=None,
-                     language=None,
-                     create_config=None,
-                     dockerfile_only=None,
-                     deployment_only=None,
-                     path=None):
-    aks_nubesgen(destination, app, language, create_config, dockerfile_only, deployment_only, path)
+def aks_nubesgen_default(destination='.',
+                         app=None,
+                         language=None,
+                         create_config=None,
+                         dockerfile_only=None,
+                         deployment_only=None,
+                         path=None):
+    aks_nubesgen_cmd_default(destination, app, language, create_config, dockerfile_only, deployment_only, path)
 
 
 def aks_draft_setup_gh(app=None,
